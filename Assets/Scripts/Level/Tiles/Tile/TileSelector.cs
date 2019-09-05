@@ -18,7 +18,7 @@ public class TileSelector : MonoBehaviour
             RaycastHit hit; 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
             if ( Physics.Raycast (ray, out hit, 200.0f)) {
-                if (hit.collider.gameObject == gameObject){
+                if (hit.collider.gameObject == gameObject && tile.levelConstraints.CanTakeMoreMoves()){
                     var debug = FindObjectOfType(typeof(DebugEditor)) as DebugEditor;
                     if(debug.EditMode){
                         tile.State = debug.State;

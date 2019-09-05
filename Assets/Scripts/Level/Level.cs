@@ -50,6 +50,8 @@ public class Level : MonoBehaviour
             }
         }
 
+        var constraints = GetComponent<LevelConstraints>();
+        constraints.Constraints = sLevel.Constraints;        
             
         foreach (var tile in tiles)
         {

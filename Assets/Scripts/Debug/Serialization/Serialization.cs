@@ -14,7 +14,7 @@ public class SLevel
 [Serializable]
 public class SConstraints
 {
-    int MaxMoves;
+    public int MaxMoves;
 }
 
 [Serializable]

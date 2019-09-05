@@ -16,12 +16,15 @@ public class TileVisuals : MonoBehaviour
 
     void Start()
     {        
-        SetIconAndColor(Front, frontIcon, frontColor);
-        SetIconAndColor(Back, backIcon, backColor);
+        UpdateVisuals();
     }
     
     void Update()
     {          
+        UpdateVisuals();
+    }
+
+    public void UpdateVisuals(){
         SetIconAndColor(Front, frontIcon, frontColor);
         SetIconAndColor(Back, backIcon, backColor);
     }

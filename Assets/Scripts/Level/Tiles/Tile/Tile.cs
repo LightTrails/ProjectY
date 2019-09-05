@@ -17,15 +17,18 @@ public class Tile : TileAnimator
     public IAction CurrentAction = null;    
     public TileVisuals visual;
 
+    public LevelConstraints levelConstraints;
+
     public int State;
+    public int StartState;
     public int EndState;
 
     public Color[] colorSchema;
 
     void Start()
     {        
-        visual = gameObject.GetComponentInChildren<TileVisuals>();
-
+        levelConstraints = FindObjectOfType(typeof(LevelConstraints)) as LevelConstraints;
+        visual = gameObject.GetComponentInChildren<TileVisuals>();        
         // ShowFront(0.1f);
 
         AnimationQueue.Enqueue(Animation.Delay(X * 0.1f));        
@@ -52,8 +55,19 @@ public class Tile : TileAnimator
         gameObject.transform.rotation = Quaternion.Euler(0, value, 0);
     }
 
+    void UpdateColor(float value){        
+        visual.frontColor = Color.Lerp(colorSchema[State], colorSchema[EndState], value);
+    }
+
+    public void ShowGoalState(){
+        AnimationQueue.Enqueue(Animation.Create(UpdateColor, Easings.Functions.QuadraticEaseInOut, 1.0f, 0.0f, 1.0f));
+        AnimationQueue.Enqueue(Animation.Delay(2));
+        AnimationQueue.Enqueue(Animation.Create(UpdateColor, Easings.Functions.QuadraticEaseOut, 1.0f, 1.0f, 0.0f));
+    }
+
     public void InitializeStates(int currentState, int endState){
         State = currentState;
+        StartState = currentState;
         EndState = endState;
         gameObject.GetComponentInChildren<TileVisuals>().CreateMaterialAndSetColor(colorSchema[currentState], colorSchema[endState]);
     }
@@ -111,15 +125,24 @@ public class Tile : TileAnimator
         AnimationQueue.Enqueue(Animation.Create(UpdateRotation, Easings.Functions.QuadraticEaseInOut, duration, 0, 180.0f));        
     }
 
-    internal void TurnColor(Color newColor)
+    internal void TurnToOriginalColor()
     {
         var animation = AnimationWithCallback.Create(
-            CurrentAction.CreateFadeOutAnimation(),
-            null,
-            () => {
-                visual.backIcon = TileIcon.Blank;
-            }
-        );
+            Animation.Create(UpdateRotation, Easings.Functions.QuadraticEaseInOut, 1.0f, 0, 180.0f), 
+            () => 
+            {                         
+                    visual.frontColor = colorSchema[StartState];                    
+                    visual.backColor = colorSchema[State];
+                    visual.UpdateVisuals();
+                    State = StartState;
+            },
+            () => 
+            {
+                    visual.backColor = colorSchema[0];
+                    visual.backIcon = TileIcon.Blank;
+            });
+
+        AnimationQueue.Enqueue(animation);
     }
 
     internal void ShowColorSideAndHideAction()

@@ -42,17 +42,20 @@ public abstract class ColorAction : IAction
             delay += AnimationConstants.TurnColorAnimationDelay;
             currentTile = NextTile(currentTile);
         }
+
+        tile.levelConstraints.MoveTaken();
     }
 
     public IAnimation CreateTurnColorAnimation(Tile tile, int newState)
     {
+        tile.State = newState;
+
         return 
                 AnimationWithCallback.Create(
                     Animation.Create(value => UpdateRotation(tile, value), Easings.Functions.QuadraticEaseInOut, AnimationConstants.TurnAnimationSpeed * 2, 0.0f, 180.0f), 
                     () => 
                     {                         
                          tile.visual.frontColor = tile.colorSchema[newState];
-                         tile.State = newState;
                     },
                     () => 
                     {

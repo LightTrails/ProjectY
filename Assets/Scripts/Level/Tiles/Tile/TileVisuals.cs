@@ -42,29 +42,24 @@ public class TileVisuals : MonoBehaviour
     {
         var newMaterial = new Material(Shader.Find("Unlit/TileShader"));
         newMaterial.SetColor("_Color", color);
-        gameObject.GetComponentInChildren<MeshRenderer>().material = newMaterial;
+        gameObject.GetComponentInChildren<Icon>().GetComponent<MeshRenderer>().material = newMaterial;
     }
 
     private void SetIconAndColor(GameObject gameObject, TileIcon tileIcon, Color color){
-        SetIcon(gameObject,tileIcon);
+        SetIcon(gameObject, tileIcon);
         SetColor(gameObject, color);
     }
 
     private void SetColor(GameObject gameObject, Color color)
-    {        
-        var component = gameObject.GetComponentInChildren<MeshRenderer>();
-        component.material.SetColor("_Color", color);
+    {                
+        gameObject.GetComponentInChildren<Icon>().GetComponent<MeshRenderer>().material.SetColor("_Color", color);
     }
 
     private void SetIcon(GameObject gameObject,TileIcon tileIcon)
     {
         var iconInfo = TileIconsRepository.TileIconRendererDictionary[tileIcon];
-        var texture = Resources.Load("Levels/Tile/Icons/"+iconInfo.ResourceName);
+        var texture = Resources.Load("Tile/Icons/"+iconInfo.ResourceName);
         transform.localRotation = Quaternion.Euler(0, 0, iconInfo.Rotation);
-        GetMaterial(gameObject).SetTexture("_MainTex", texture as Texture2D);
-    }
-
-    private Material GetMaterial(GameObject gameObject){
-        return gameObject.GetComponentInChildren<MeshRenderer>().material;
+        gameObject.GetComponentInChildren<Icon>().GetComponent<MeshRenderer>().material.SetTexture("_MainTex", texture as Texture2D);
     }
 }

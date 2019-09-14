@@ -69,7 +69,9 @@ public class Tile : TileAnimator
         State = currentState;
         StartState = currentState;
         EndState = endState;
-        gameObject.GetComponentInChildren<TileVisuals>().CreateMaterialAndSetColor(colorSchema[currentState], colorSchema[endState]);
+
+        var visual = gameObject.GetComponentInChildren<TileVisuals>();
+        visual.CreateMaterialAndSetColor(colorSchema[currentState], colorSchema[endState]);                
     }
 
     public IEnumerable<Tile> GetSurroundingTiles(){
@@ -131,8 +133,10 @@ public class Tile : TileAnimator
             Animation.Create(UpdateRotation, Easings.Functions.QuadraticEaseInOut, 1.0f, 0, 180.0f), 
             () => 
             {                         
-                    visual.frontColor = colorSchema[StartState];                    
+                    visual.frontColor = colorSchema[StartState];
+
                     visual.backColor = colorSchema[State];
+
                     visual.UpdateVisuals();
                     State = StartState;
             },

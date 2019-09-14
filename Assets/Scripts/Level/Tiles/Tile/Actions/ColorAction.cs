@@ -55,10 +55,11 @@ public abstract class ColorAction : IAction
                     Animation.Create(value => UpdateRotation(tile, value), Easings.Functions.QuadraticEaseInOut, AnimationConstants.TurnAnimationSpeed * 2, 0.0f, 180.0f), 
                     () => 
                     {                         
-                         tile.visual.frontColor = tile.colorSchema[newState];
+                         tile.visual.frontColor = tile.colorSchema[newState];                         
+                         tile.visual.UpdateVisuals();
                     },
                     () => 
-                    {
+                    {                         
                          tile.visual.backColor = Color.white;
                          tile.visual.backIcon = TileIcon.Blank;
                     });

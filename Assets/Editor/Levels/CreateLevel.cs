@@ -10,12 +10,13 @@ public class CustomWindow  : EditorWindow
      Vector2 levelDimensions = new Vector2(5,5);
 
     int Selected;
-
+    TextAsset[] levels;
+    
     private string LevelPath = @"C:\Debug\";
 
     [MenuItem("Tools/CreateLevel")]
     static void Create()
-    {
+    {        
         EditorWindow.GetWindow(typeof(CustomWindow));        
     }
 
@@ -25,13 +26,13 @@ public class CustomWindow  : EditorWindow
 
      void OnGUI()
      {         
-         var level = FindObjectOfType<Level>() as Level;
+        levels = Resources.LoadAll<TextAsset>("Levels");
+
+        var level = FindObjectOfType<Level>() as Level;
          
-         levelDimensions = EditorGUILayout.Vector2Field("Size:", levelDimensions);         
+        levelDimensions = EditorGUILayout.Vector2Field("Size:", levelDimensions);         
 
-        var files = Directory.GetFiles(LevelPath);
-
-        string[] options = files.Select(x=> Path.GetFileName(x) ).ToArray();
+        string[] options = levels.Select(x=> x.name ).ToArray();
 
         Selected = EditorGUILayout.Popup("Input", Selected, options);
 
@@ -44,7 +45,7 @@ public class CustomWindow  : EditorWindow
 
         if (GUILayout.Button("Load Level"))
         {
-            var loadedContent = File.ReadAllText( Path.Combine(LevelPath, files[Selected]));
+            var loadedContent = levels[Selected].text;
             var loadedJson = JsonUtility.FromJson<SLevel>(loadedContent);
 
             level.CreateLevel(loadedJson);

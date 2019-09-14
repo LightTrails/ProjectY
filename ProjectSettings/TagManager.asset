@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Cube
+  - Overlay
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Cube
+    uniqueID: 181547455
+    locked: 0
+  - name: Overlay
+    uniqueID: 1858953969
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

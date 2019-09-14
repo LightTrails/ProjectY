@@ -29,19 +29,17 @@ public class LevelConstraints : MonoBehaviour
     public void MoveTaken(){
         MovesLeft--;
 
-        if(MovesLeft == 0){
-            constraintsText.ShowLooseText();
-            GameHasEnded = true;
-            return;
-        }
-
         if(GetComponentsInChildren<Tile>().All(x => x.State == x.EndState)){
             constraintsText.ShowWinText();
-            GameHasEnded = true;
-            return;
+            FindObjectOfType<CelebrationParticles>().Play();           
+            GameHasEnded = true;            
         }
-
-        UpdateText();        
+        else if(MovesLeft == 0){
+            constraintsText.ShowLooseText();
+            GameHasEnded = true;            
+        } else {
+            UpdateText();        
+        }
     }
 
     public bool CanTakeMoreMoves(){

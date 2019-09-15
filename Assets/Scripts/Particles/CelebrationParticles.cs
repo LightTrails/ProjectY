@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CelebrationParticles : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{    
+    void Awake()
     {
         GetComponent<ParticleSystem>().Stop();
     }

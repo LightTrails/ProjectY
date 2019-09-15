@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7678869896212721179}
   - component: {fileID: 1334647753822975062}
   - component: {fileID: 9116163352951895160}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6945342715619108566}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5030282254032193712}
   - component: {fileID: 7932384037721585617}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,8 +175,6 @@ MonoBehaviour:
   frontColor: {r: 1, g: 1, b: 1, a: 1}
   backIcon: 0
   backColor: {r: 1, g: 1, b: 1, a: 1}
-  BackOverlayDarken: 1
-  FrontOverlayDarken: 0
 --- !u!1 &2726157084504267423
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +187,7 @@ GameObject:
   - component: {fileID: 4900683416680783335}
   - component: {fileID: 2714396133766231497}
   - component: {fileID: 7022264829693660068}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +279,7 @@ GameObject:
   - component: {fileID: 6365980166746129695}
   - component: {fileID: 3860200402635141545}
   - component: {fileID: 8948148710991932016}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 641964419306850481}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +392,7 @@ GameObject:
   - component: {fileID: 842071860227170411}
   - component: {fileID: 3749631517248877148}
   - component: {fileID: 6231958470447160745}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +499,7 @@ GameObject:
   - component: {fileID: 1756214595917141961}
   - component: {fileID: 5639183153731793821}
   - component: {fileID: 2948820283155622434}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3628208028065573815}
   - component: {fileID: 8569150900811924669}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +676,7 @@ GameObject:
   - component: {fileID: 7649603857620928017}
   - component: {fileID: 885220440827095522}
   - component: {fileID: 3403773611520425320}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +783,7 @@ GameObject:
   - component: {fileID: 9142799641329182571}
   - component: {fileID: 3829132305264362638}
   - component: {fileID: 1573756404055486897}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class TileAnimator : MonoBehaviour
+public class AnimatedObject : MonoBehaviour
 {    
     protected Queue<IAnimation> AnimationQueue = new Queue<IAnimation>();
 

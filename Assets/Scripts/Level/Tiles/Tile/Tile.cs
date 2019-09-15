@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Tile : TileAnimator
+public class Tile : AnimatedObject
 {    
     public int X;
     public int Y;

@@ -11,6 +11,8 @@ public class LevelConstraints : MonoBehaviour
     public bool GameHasEnded = false;
     private ConstraintsText constraintsText;
 
+    public LevelOverlay levelOverlay;
+
     void Start(){
         constraintsText = FindObjectOfType(typeof(ConstraintsText)) as ConstraintsText; 
         Reset();
@@ -30,12 +32,11 @@ public class LevelConstraints : MonoBehaviour
         MovesLeft--;
 
         if(GetComponentsInChildren<Tile>().All(x => x.State == x.EndState)){
-            constraintsText.ShowWinText();
-            FindObjectOfType<CelebrationParticles>().Play();           
+            levelOverlay.ShowWinnerScene();
             GameHasEnded = true;            
         }
         else if(MovesLeft == 0){
-            constraintsText.ShowLooseText();
+            levelOverlay.ShowLooserScene();
             GameHasEnded = true;            
         } else {
             UpdateText();        
